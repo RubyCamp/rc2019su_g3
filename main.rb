@@ -2,6 +2,8 @@ require 'dxruby'
 require_relative 'scene'
 require_relative 'opening/director'
 require_relative 'ending/director'
+require_relative 'gaming/character'
+require_relative 'gaming/director'
 
 Window.caption = "Ruby Camp 2019"
 Window.width = 800
