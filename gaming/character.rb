@@ -8,6 +8,7 @@ class Character
   def move
     @x += 30 if Input.keyPush?(K_RIGHT)
     @x -= 30 if Input.keyPush?(K_LEFT)
+    $x = @x
   end
 
   def draw

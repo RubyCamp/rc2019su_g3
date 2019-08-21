@@ -23,24 +23,30 @@ module Gaming
 
   require_relative 'fall'
 
-    x1 = rand(5) * 140 + 80
-    x2 = rand(5) * 140 + 80
+   
+   
+  x1 = rand(5) * 140 + 80
+  x2 = rand(5) * 140 + 80
 
-    if x1 == x2
-      while x1 == x2
-        x2 = rand(5) * 140 + 80
-      end
+  if x1 == x2
+    while x1 == x2
+      x2 = rand(5) * 140 + 80
     end
+  end
 
 
-    director1 = Director.new(Sprite_shimane.new(x1, 0))
-    director2 = Director.new(Sprite_tottori.new(x2, 0))
+  director1 = Director.new(Sprite_shimane.new(x1, 0))
+  director2 = Director.new(Sprite_tottori.new(x2, 0))
 
   begin
-    timeout(10){
+    timeout(20){
       Window.loop do
         break if Input.keyPush?(K_ESCAPE)
-        if director1.y == 600 
+
+        if x1 == $x && director1.y == Window.width - @char.width
+          x1 = rand(5) * 140 + 80
+          director1 = Director.new(Sprite_shimane.new(x1, 0))
+        elsif director1.y == 600 
           x1 = rand(5) * 140 + 80
           director1 = Director.new(Sprite_shimane.new(x1, 0))
         end
@@ -62,5 +68,4 @@ module Gaming
       end
     }
   end
-  
 end
