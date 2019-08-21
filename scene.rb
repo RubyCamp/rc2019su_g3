@@ -1,5 +1,6 @@
 class Scene
   @@scenes = {}
+  @@vals = {}
 
   @@current_scene_name = nil
 
@@ -13,5 +14,14 @@ class Scene
 
   def self.play
     @@scenes[@@current_scene_name].play
+  end
+
+  #以下二つ追加
+  def self.set_val(name, value)
+    @@vals[name.to_sym] = value
+  end
+
+  def self.get_val(name)
+    return @@vals[name.to_sym]
   end
 end
