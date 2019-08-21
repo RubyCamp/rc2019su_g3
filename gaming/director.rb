@@ -1,17 +1,22 @@
 module Gaming
   class Director
+    attr_accessor :clear, :miss
     def initialize(chars)
-      @char = Character.new(0, Window.height-40,"images/char.png")
+      @char = Character.new(0, Window.height-40,"images/IMG_7974.png",self)
       @chars = chars
       @bg_img = Image.load("images/background.png")
+      @clear -0
+      @miss=0
+      @gokei = 0
     end
 
     def play
       Window.draw(0, 0, @bg_img)
       @char.move
       @char.draw
-      @chars.moves
-      @chars.draws
+      @char.check(@chars,@char)
+      @chars.move
+      @chars.draw
     end
 
     def y
@@ -40,7 +45,7 @@ module Gaming
     timeout(10){
       Window.loop do
         break if Input.keyPush?(K_ESCAPE)
-        if director1.y == 600 
+        if director1.y == 600
           x1 = rand(5) * 140 + 80
           director1 = Director.new(Sprite_shimane.new(x1, 0))
         end
@@ -59,8 +64,13 @@ module Gaming
 
         director1.play
         director2.play
+
       end
     }
   end
-  
+  def tocuten
+    @goukei = @clear - @miss
+  end
+
+
 end
