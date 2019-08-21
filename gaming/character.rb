@@ -13,4 +13,16 @@ class Character
   def draw
     Window.draw(@x,@y,@image)
   end
+
+  #def hit(obj)
+  #  if obj ==
+  #    clear += 1
+  #  else
+  #    miss += 1
+  #  end
+  #end
+
+  #def hantei
+  #  miss += 1 if
+  #end
 end
