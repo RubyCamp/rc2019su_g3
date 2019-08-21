@@ -1,5 +1,6 @@
 require 'timeout'
 require_relative 'fall'
+require_relative 'character'
 
 module Gaming
   class Director
@@ -24,9 +25,9 @@ module Gaming
 
     def play
       Scene.move_to(:ending) if Input.key_push?(K_SPACE)
-      Window.draw(0, 0, @bg_img, 0)
+      Window.draw_scale(0, 0, @bg_img, 1.28, 1.28, 0, 0)
       if TRUE
-        Window.draw_box_fill(800, 0, 1024, 768, [255, 204, 204, 204], 1)
+        Window.draw_box_fill(800, 0, 1024, 768, [130, 204, 204, 204], 1)
       end
 
       if @director1.y == 600 

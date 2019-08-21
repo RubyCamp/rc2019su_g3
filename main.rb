@@ -2,9 +2,7 @@ require 'dxruby'
 require_relative 'scene'
 require_relative 'opening/director'
 require_relative 'ending/director'
-require_relative 'gaming/character'
 require_relative 'gaming/director'
-require_relative 'gaming/fall'
 
 Window.caption = "しまねあつめ"
 Window.width = 1024
