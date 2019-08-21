@@ -18,7 +18,7 @@ module Opening
         end
 
         def play
-            Scene.move_to(:ending) if Input.key_push?(K_SPACE)
+            Scene.move_to(:gaming) if Input.key_push?(K_SPACE)
             # Window.draw(0, 0, @bg_image)    
 
             Window.draw_font(200, 100, "しまねあつめ", @font)

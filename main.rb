@@ -6,9 +6,9 @@ require_relative 'gaming/character'
 require_relative 'gaming/director'
 require_relative 'gaming/fall'
 
-Window.caption = "Ruby Camp 2019"
-Window.width = 800
-Window.height = 600
+Window.caption = "しまねあつめ"
+Window.width = 1024
+Window.height = 768
 
 Scene.add(Opening::Director.new, :opening)
 Scene.add(Gaming::Director.new, :gaming)
