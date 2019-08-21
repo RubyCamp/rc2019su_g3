@@ -5,6 +5,7 @@ module Ending
         def initialize(args = {})
             @args = args
             prepare_scene
+            @map_image = Image.load('images/32-shimane2.png')
         end
         
         def prepare_scene
@@ -49,7 +50,7 @@ module Ending
             Scene.move_to(:opening) if Input.key_push?(K_SPACE)
             Window.draw_font(525, 500, "終了(Escape)", @font, color:C_WHITE)
             Window.draw_font(320, 550, "地図を見る(Tab)", @font, color:C_WHITE)
-            Scene.move_to(:map) if Input.key_push?(K_TAB)
+            Window.draw_scale(100, 100, @map_image, 1.5, 1.5, 10,10) if Input.key_down?(K_TAB)
 
 
         end
