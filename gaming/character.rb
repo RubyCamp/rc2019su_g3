@@ -7,8 +7,8 @@ class Character
   end
 
   def move
-    @x += 30 if Input.keyPush?(K_RIGHT)
-    @x -= 30 if Input.keyPush?(K_LEFT)
+    @x += 140 if Input.keyPush?(K_RIGHT)
+    @x -= 140 if Input.keyPush?(K_LEFT)
   end
 
   def draw
@@ -24,8 +24,4 @@ class Character
     end
   end
 
-
-  def tokuten
-    goukei = clear - miss
-  end
 end
