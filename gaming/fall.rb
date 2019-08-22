@@ -1,9 +1,11 @@
 class Sprite_sanin < Sprite
   attr_reader :str
+  attr_accessor :regen
   def initialize(x, y, image, director)
       #@font = Font.new(40)
       super(x,y,image)
       @director = director
+      @regen = false
   end
 end
 
@@ -32,6 +34,7 @@ class Sprite_shimane < Sprite_sanin
     def hantei
       if self.y + self.image.height > Window.height
         @director.miss += 1
+        self.regen = true
       end
     end
 end
@@ -48,15 +51,16 @@ class Sprite_tottori < Sprite_sanin
 
     def move
         self.y += @yy
+        hantei
     end
 
+    def hantei
+      if self.y + self.image.height > Window.height
+        self.regen = true
+      end
+    end
     def play
         move
         draw
     end
-
-    def hit(obj)
-      p :hit
-    end
-
 end
