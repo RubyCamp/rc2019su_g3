@@ -45,10 +45,10 @@ end
 
 class Sprite_tottori < Sprite_sanin
     def initialize(x, y,image_file,director)
-
         chose = ["images/tottori_moji/aimi.png", "images/tottori_moji/daiei.png", "images/tottori_moji/iwami.png", "images/tottori_moji/kokufu.png", "images/tottori_moji/kurayoshi.png", "images/tottori_moji/sakaiminato.png", "images/tottori_moji/tottori.png", "images/tottori_moji/yonago.png"].sample
 
         image = Image.load(chose)
+
         @yy = rand(5) + 2
         super(x,y,image,director)
     end

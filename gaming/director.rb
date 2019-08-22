@@ -8,15 +8,13 @@ module Gaming
     def initialize
       @char = Character.new(80, Window.height-120,"images/IMG_7974.png",self)
       # @chars = chars
-      @bg_img = Image.load("images/background.png")
-      #@clear = 0
-      #@miss = 0
-      #@score = 0
+      @bg_img = Image.load("images/gameing_bg/6479(2).png")
       Scene.set_val(:clear,0)
       Scene.set_val(:miss,0)
       @font = Font.new(50, 'MS 明朝', weight: true)
       @strong_font = Font.new(70, 'MS 明朝', weight: true)
 
+     
       x1 = rand(5) * 140 + 80
       x2 = rand(5) * 140 + 80
 
@@ -31,6 +29,8 @@ module Gaming
     end
 
     def play
+      Window.draw_box_fill(0, 0, Window.width, Window.height, C_WHITE, 0)
+      
       @start_time ||= Time.now  # 制限時間の初期化
       @now_time = Time.now # 現在の時間
       @limit_time = 30  #秒
@@ -80,6 +80,12 @@ module Gaming
         end
         @director2 = Sprite_tottori.new(x2, 0,nil, self)
       end
+
+      @director1.play
+      @director2.play
+      @char.move
+      @char.draw
+      Sprite.check([@director1, @director2],@char)
     end
 
     def tokuten
