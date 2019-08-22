@@ -38,10 +38,10 @@ module Gaming
       @countdown = (@limit_time - @diff_time).to_i
       min = @countdown / 60
       sec = @countdown % 60
-      Window.drawFont(830, 100, "残り時間", @font, z:2)
-      Window.drawFont(850, 150, "#{min}:#{sec}", @strong_font, z:2)
-      Window.drawFont(870, 400, "得点", @font, z:2)
-      Window.drawFont(870, 450, "#{self.tokuten}点", @strong_font, z:2)
+      Window.drawFont(830, 100, "残り時間", @font, z:2, color:[0,0,0])
+      Window.drawFont(850, 150, "#{min}:#{sec}", @strong_font, z:2, color:[0,0,0])
+      Window.drawFont(870, 400, "得点", @font, z:2, color:[0,0,0])
+      Window.drawFont(870, 450, "#{self.tokuten}点", @strong_font, z:2, color:[0,0,0])
       if @countdown <= 0
         @start_time = nil
         Scene.move_to(:ending)
