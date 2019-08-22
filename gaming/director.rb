@@ -14,6 +14,8 @@ module Gaming
       @font = Font.new(50, 'MS 明朝', weight: true)
       @strong_font = Font.new(70, 'MS 明朝', weight: true)
 
+      Sound.new(music/710.mp3)
+
      
       x1 = rand(5) * 140 + 80
       x2 = rand(5) * 140 + 80
