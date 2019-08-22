@@ -32,7 +32,7 @@ module Gaming
 
       @start_time ||= Time.now  # 制限時間の初期化
       @now_time = Time.now # 現在の時間
-      @limit_time = 5  #秒
+      @limit_time = 20  #秒
       @diff_time = @now_time - @start_time #経過時間分
       @countdown = (@limit_time - @diff_time).to_i
       min = @countdown / 60
