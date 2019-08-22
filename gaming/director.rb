@@ -14,7 +14,9 @@ module Gaming
       @font = Font.new(50, 'MS 明朝', weight: true)
       @strong_font = Font.new(70, 'MS 明朝', weight: true)
 
-     
+      @sound = Sound.new("sound/td2hj-yya3p.wav")
+      @timer = 0
+
       x1 = rand(5) * 140 + 80
       x2 = rand(5) * 140 + 80
 
@@ -42,7 +44,18 @@ module Gaming
       Window.drawFont(850, 150, "#{min}:#{sec}", @strong_font, z:2, color:[0,0,0])
       Window.drawFont(870, 400, "得点", @font, z:2, color:[0,0,0])
       Window.drawFont(870, 450, "#{self.tokuten}点", @strong_font, z:2, color:[0,0,0])
+      
+      @sound.loop_count = (-1)
+      if @timer == 0
+        #BGMを流し始めるコード
+        @sound.play
+        @timer += 1
+      end
+          
       if @countdown <= 0
+        #BGMを止めるコード
+        @sound.stop
+        @timer = 0
         @start_time = nil
         Scene.move_to(:ending)
       end
