@@ -7,6 +7,10 @@ class Sprite_sanin < Sprite
       @director = director
       @regen = false
   end
+
+  def height
+    self.image.height
+  end
 end
 
 class Sprite_shimane < Sprite_sanin
@@ -19,10 +23,6 @@ class Sprite_shimane < Sprite_sanin
         #@font = Font.new(40)
         @yy = rand(5) + 2
         super(x,y,image,director)
-    end
-    
-    def image_height
-      @image.height
     end
 
     def move
@@ -51,10 +51,6 @@ class Sprite_tottori < Sprite_sanin
 
         @yy = rand(5) + 2
         super(x,y,image,director)
-    end
-
-    def image_height
-      @image.height
     end
 
     def move

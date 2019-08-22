@@ -24,8 +24,8 @@ module Gaming
         end
       end
 
-      @director1 = Sprite_shimane.new(x1, 0,nil,self)
-      @director2 = Sprite_tottori.new(x2, 0,nil,self)
+      @director1 = Sprite_shimane.new(x1, -400,nil,self)
+      @director2 = Sprite_tottori.new(x2, -400,nil,self)
     end
 
     def play
@@ -67,7 +67,7 @@ module Gaming
 
       if @director1.regen
         x1 = rand(5) * 140 + 80
-        @director1 = Sprite_shimane.new(x1, 0, nil, self)
+        @director1 = Sprite_shimane.new(x1, - @director1.height, nil, self)
       end
 
       if @director2.regen
@@ -78,7 +78,7 @@ module Gaming
             x2 = rand(5) * 140 + 80
           end
         end
-        @director2 = Sprite_tottori.new(x2, 0,nil, self)
+        @director2 = Sprite_tottori.new(x2, - @director2.height,nil, self)
       end
 
       @director1.play
