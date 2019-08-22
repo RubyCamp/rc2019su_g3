@@ -15,6 +15,7 @@ module Gaming
       Scene.set_val(:clear,0)
       Scene.set_val(:miss,0)
       @font = Font.new(50, 'MS 明朝', weight: true)
+      @strong_font = Font.new(70, 'MS 明朝', weight: true)
 
       x1 = rand(5) * 140 + 80
       x2 = rand(5) * 140 + 80
@@ -30,24 +31,23 @@ module Gaming
     end
 
     def play
-
-
       @start_time ||= Time.now  # 制限時間の初期化
       @now_time = Time.now # 現在の時間
-      @limit_time = 20  #秒
+      @limit_time = 30  #秒
       @diff_time = @now_time - @start_time #経過時間分
       @countdown = (@limit_time - @diff_time).to_i
       min = @countdown / 60
       sec = @countdown % 60
-      Window.drawFont(870, 700, "#{min}:#{sec}", @font, z:2)
+      Window.drawFont(830, 100, "残り時間", @font, z:2)
+      Window.drawFont(850, 150, "#{min}:#{sec}", @strong_font, z:2)
+      Window.drawFont(870, 400, "得点", @font, z:2)
+      Window.drawFont(870, 450, "#{self.tokuten}点", @strong_font, z:2)
       if @countdown <= 0
         @start_time = nil
         Scene.move_to(:ending)
       end
       Window.draw_scale(0, 0, @bg_img, 1.28, 1.28, 0, 0)
-      if TRUE
-        Window.draw_box_fill(800, 0, 1024, 768, [130, 204, 204, 204], 1)
-      end
+      Window.draw_box_fill(800, 0, 1024, 768, [130, 204, 204, 204], 1)
 
       @director1.play
       @director2.play
@@ -83,15 +83,7 @@ module Gaming
     end
 
     def tokuten
-      @score = @clear - @miss
+      Scene.get_val(:clear) - Scene.get_val(:miss)
     end
-
-    # begin
-    #   timeout(10){
-    #     Window.loop do
-
-    #     end
-    #   }
-    # end
   end
 end
