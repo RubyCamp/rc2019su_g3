@@ -16,43 +16,42 @@ module Ending
         end
 
         def play
-            # Scene.move_to(:scene1) if Input.key_push?(K_SPACE)
-            # Window.draw(0, 0, @bg_image)    
-
+            #gamingのデータを取ってこれるようになったらコメントアウトしてる部分に書き換える。
             @clear_num = 5
             @miss_num = 3
             @score_num = 10
             #@clear_num = Scene.get_val(:clear_num)
             #@miss_num =  Scene.get_val(:miss_num)
             #@score_num =  Scene.get_val(:score_num)
-    
-            if @score_num > 5
-                @comment = "よくできました！！"
-            elsif 5 >= @score_num && @score_num > 0 
-                @comment = "まあまあだね！！"
-            else 
-                @comment = "全然だめ！"
-            end
 
+            #画面上段の文字
             Scene.move_to(:opening) if Input.key_push?(K_SPACE)
             #Window.draw_scale(5, 5, @bg_image, 1.8, 1.8, 10,10) 
-            Window.draw_font(320, 20, "結果発表", @font, color:C_WHITE)
+            Window.draw_font(380, 20, "結果発表", @font, color:C_WHITE)
 
-            Window.draw_font(80, 100, "得点：#{@score_num}点", @score_font, color:C_RED)
-            Window.draw_font(500, 220, "#{@comment}", @font, color:C_RED)
+            #画面中段の文字
+            Window.draw_font(140, 100, "得点：#{@score_num}点", @score_font, color:C_RED)
+                #得点に応じてコメントをだす機能
+                Window.draw_font(560, 220, "#{@comment}", @font, color:C_RED)
+                if @score_num > 5
+                    @comment = "よくできました！！"
+                elsif 5 >= @score_num && @score_num > 0 
+                    @comment = "まあまあだね！！"
+                else 
+                    @comment = "全然だめ！"
+                end
 
-            Window.draw_font(260, 290, "クリア：", @clear_font, color:C_MAGENTA)
-            Window.draw_font(490, 290, "#{@clear_num}都市", @clear_font, color:C_MAGENTA)
-            Window.draw_font(306, 360, "ミス：", @miss_font, color:C_BLUE)
-            Window.draw_font(490, 360, "#{@miss_num}都市", @miss_font, color:C_BLUE)
+            Window.draw_font(320, 290, "クリア：", @clear_font, color:C_MAGENTA)
+            Window.draw_font(550, 290, "#{@clear_num}都市", @clear_font, color:C_MAGENTA)
+            Window.draw_font(366, 360, "ミス：", @miss_font, color:C_BLUE)
+            Window.draw_font(550, 360, "#{@miss_num}都市", @miss_font, color:C_BLUE)
 
-            Window.draw_font(65, 500, "もう一度(Space)", @font, color:C_WHITE)
+            #画面後段の文字
+            Window.draw_font(125, 500, "もう一度(Space)", @font, color:C_WHITE)
             Scene.move_to(:opening) if Input.key_push?(K_SPACE)
-            Window.draw_font(525, 500, "終了(Escape)", @font, color:C_WHITE)
-            Window.draw_font(320, 550, "地図を見る(Tab)", @font, color:C_WHITE)
-            Window.draw_scale(100, 100, @map_image, 1.5, 1.5, 10,10) if Input.key_down?(K_TAB)
-
-
+            Window.draw_font(585, 500, "終了(Escape)", @font, color:C_WHITE)
+            Window.draw_font(380, 550, "地図を見る(Tab)", @font, color:C_WHITE)
+            Window.draw_scale(80, 100, @map_image, 1.5, 1.5, 10,10) if Input.key_down?(K_TAB)
         end
     end
 end
