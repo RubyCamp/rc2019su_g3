@@ -1,32 +1,24 @@
 class Sprite_sanin < Sprite
   attr_reader :str
   def initialize(x, y, image, director)
-      @x, @y = x, y
       #@font = Font.new(40)
-      super
+      super(x,y,image)
       @director = director
   end
 end
 
 class Sprite_shimane < Sprite_sanin
-    attr_reader :str
-    attr_accessor :y
-    def initialize(x, y,image,director)
-        #@x, @y = x, y
+    def initialize(x, y,image_file,director)
         #@str = ["松江", "浜田", "出雲", "益田", "大田", "安来", "江津", "雲南"].sample
-        @str = Image.load("images/shimane_moji/matsue.png")
+        image = Image.load("images/shimane_moji/matsue.png")
         #@font = Font.new(40)
         @yy = rand(5) + 2
-        super
+        super(x,y,image,director)
     end
 
     def move
-        @y += @yy
+        self.y += @yy
         hantei
-    end
-
-    def draw
-        Window.draw(@x, @y, @str)
     end
 
     def play
@@ -35,32 +27,30 @@ class Sprite_shimane < Sprite_sanin
     end
 
     def hantei
-      #if self.y + self.height > Window.height
-      #  director.miss += 1
-      #end
+      if self.y + self.image.height > Window.height
+        @director.miss += 1
+      end
     end
 end
 
 class Sprite_tottori < Sprite_sanin
-    attr_accessor :y
-    def initialize(x, y,image,director)
-        #@x, @y = x, y
-        @str = Image.load("images/tottori_moji/aimi3.png")
-        #@font = Font.new(40)
+    def initialize(x, y,image_file,director)
+        image = Image.load("images/tottori_moji/aimi3.png")
         @yy = rand(5) + 2
-        super
+        super(x,y,image,director)
     end
 
     def move
-        @y += @yy
-    end
-
-    def draw
-        Window.draw(@x, @y, @str)
+        self.y += @yy
     end
 
     def play
         move
         draw
     end
+
+    def hit(obj)
+      p :hit
+    end
+
 end
