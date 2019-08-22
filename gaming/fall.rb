@@ -2,7 +2,7 @@ class Sprite_sanin < Sprite
   attr_reader :str
   def initialize(x, y, image, director)
       @x, @y = x, y
-      @font = Font.new(40)
+      #@font = Font.new(40)
       super
       @director = director
   end
@@ -45,7 +45,7 @@ class Sprite_tottori < Sprite_sanin
     attr_accessor :y
     def initialize(x, y,image,director)
         #@x, @y = x, y
-        @str = ["倉吉", "鳥取", "米子", "会見", "岩美", "国府", "境港", "大栄"].sample
+        @str = Image.load("images/tottori_moji/aimi3.png")
         #@font = Font.new(40)
         @yy = rand(5) + 2
         super
@@ -56,7 +56,7 @@ class Sprite_tottori < Sprite_sanin
     end
 
     def draw
-        Window.draw_font(@x, @y, @str, @font)
+        Window.draw(@x, @y, @str)
     end
 
     def play
