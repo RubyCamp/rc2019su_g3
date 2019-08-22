@@ -12,12 +12,6 @@ class Character < Sprite
   end
 
   def hit(obj)
-    if  obj.is_a?(Sprite_shimane)
-      @director.clear += 1
-       # strは"松江"　など
-    elsif obj.is_a?(Sprite_tottori)
-      @director.miss += 1
-    end
   end
 
 end

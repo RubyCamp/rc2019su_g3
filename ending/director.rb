@@ -7,7 +7,7 @@ module Ending
             prepare_scene
             @map_image = Image.load('images/32-shimane2.png')
         end
-        
+
         def prepare_scene
             @font = Font.new(50, 'MS 明朝', weight: true)
             @score_font = Font.new(120, 'MS 明朝', weight: true)
@@ -17,16 +17,14 @@ module Ending
 
         def play
             #gamingのデータを取ってこれるようになったらコメントアウトしてる部分に書き換える。
-            @clear_num = 5
-            @miss_num = 3
-            @score_num = 10
-            #@clear_num = Scene.get_val(:clear_num)
-            #@miss_num =  Scene.get_val(:miss_num)
-            #@score_num =  Scene.get_val(:score_num)
+
+            @clear_num = Scene.get_val(:clear)
+            @miss_num =  Scene.get_val(:miss)
+            @score_num =  Scene.get_val(:score) || 0
 
             #画面上段の文字
             Scene.move_to(:opening) if Input.key_push?(K_SPACE)
-            #Window.draw_scale(5, 5, @bg_image, 1.8, 1.8, 10,10) 
+            #Window.draw_scale(5, 5, @bg_image, 1.8, 1.8, 10,10)
             Window.draw_font(380, 20, "結果発表", @font, color:C_WHITE)
 
             #画面中段の文字
@@ -35,9 +33,9 @@ module Ending
                 Window.draw_font(560, 220, "#{@comment}", @font, color:C_RED)
                 if @score_num > 5
                     @comment = "よくできました！！"
-                elsif 5 >= @score_num && @score_num > 0 
+                elsif 5 >= @score_num && @score_num > 0
                     @comment = "まあまあだね！！"
-                else 
+                else
                     @comment = "全然だめ！"
                 end
 

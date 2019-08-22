@@ -6,12 +6,14 @@ module Gaming
   class Director
     attr_accessor :y, :clear, :miss
     def initialize
-      @char = Character.new(80, Window.height-80,"images/IMG_7974.png",self)
+      @char = Character.new(80, Window.height-120,"images/IMG_7974.png",self)
       # @chars = chars
       @bg_img = Image.load("images/background.png")
-      @clear = 0
-      @miss = 0
-      @score = 0
+      #@clear = 0
+      #@miss = 0
+      #@score = 0
+      Scene.set_val(:clear,0)
+      Scene.set_val(:miss,0)
       @font = Font.new(50, 'MS 明朝', weight: true)
 
       x1 = rand(5) * 140 + 80
@@ -52,6 +54,13 @@ module Gaming
       @char.move
       @char.draw
       @char.check([@director1, @director2]).each do |director|
+        if  director.is_a?(Sprite_shimane)
+          Scene.set_val(:clear, Scene.get_val(:clear)+1)
+           # strは"松江"　など
+        elsif director.is_a?(Sprite_tottori)
+          Scene.set_val(:miss, Scene.get_val(:miss)+ 1)
+        end
+
         director.vanish
         director.regen = true
       end
@@ -69,7 +78,6 @@ module Gaming
             x2 = rand(5) * 140 + 80
           end
         end
-
         @director2 = Sprite_tottori.new(x2, 0,nil, self)
       end
     end

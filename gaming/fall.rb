@@ -30,7 +30,7 @@ class Sprite_shimane < Sprite_sanin
 
     def hantei
       if self.y + self.image.height > Window.height
-        @director.miss += 1
+        Scene.set_val(:miss, Scene.get_val(:miss) + 1)
         self.regen = true
       end
     end
