@@ -41,8 +41,8 @@ module Ending
 
             Window.draw_font(320, 290, "クリア：", @clear_font, color:C_MAGENTA)
             Window.draw_font(550, 290, "#{@clear_num}都市", @clear_font, color:C_MAGENTA)
-            Window.draw_font(366, 360, "ミス：", @miss_font, color:C_BLUE)
-            Window.draw_font(550, 360, "#{@miss_num}都市", @miss_font, color:C_BLUE)
+            Window.draw_font(366, 360, "ミス：", @miss_font, color:[255,0,141,255])
+            Window.draw_font(550, 360, "#{@miss_num}都市", @miss_font, color:[255,0,141,255])
 
             #画面後段の文字
             Window.draw_font(125, 500, "もう一度(Space)", @font, color:C_WHITE)
