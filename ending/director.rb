@@ -20,7 +20,7 @@ module Ending
 
             @clear_num = Scene.get_val(:clear)
             @miss_num =  Scene.get_val(:miss)
-            @score_num =  Scene.get_val(:score) || 0
+            @score_num =  @clear_num - @miss_num
 
             #画面上段の文字
             Scene.move_to(:opening) if Input.key_push?(K_SPACE)

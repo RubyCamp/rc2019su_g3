@@ -11,7 +11,4 @@ class Character < Sprite
     self.x -= 140 if Input.keyPush?(K_LEFT)
   end
 
-  def hit(obj)
-  end
-
 end
