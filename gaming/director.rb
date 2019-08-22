@@ -68,7 +68,7 @@ module Gaming
       @director2.play
       @char.move
       @char.draw
-      @char.check([@director1, @director2],@char)
+      Sprite.check([@director1, @director2],@char)
     end
 
     def tocuten
