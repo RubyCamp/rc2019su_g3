@@ -10,6 +10,7 @@ module Ending
 
         def prepare_scene
             @font = Font.new(50, 'MS 明朝', weight: true)
+            @strong_font = Font.new(100, 'MS 明朝', weight: true)
             @score_font = Font.new(120, 'MS 明朝', weight: true)
             @clear_font = Font.new(80, 'MS 明朝', weight: true)
             @miss_font = Font.new(80, 'MS 明朝', weight: true)
@@ -25,19 +26,19 @@ module Ending
             #画面上段の文字
             Scene.move_to(:opening) if Input.key_push?(K_SPACE)
             #Window.draw_scale(5, 5, @bg_image, 1.8, 1.8, 10,10)
-            Window.draw_font(380, 20, "結果発表", @font, color:C_WHITE)
+            Window.draw_font(370, 20, "結果発表", @strong_font, color:C_WHITE)
 
             #画面中段の文字
-            Window.draw_font(140, 100, "得点：#{@score_num}点", @score_font, color:C_YELLOW)
+            Window.draw_font(320, 120, "得点：#{@score_num}点", @score_font, color:C_YELLOW)
                 #得点に応じてコメントをだす機能
-                Window.draw_font(560, 220, "#{@comment}", @font, color:C_YELLOW)
-                if @score_num > 5
-                    @comment = "よくできました！！"
-                elsif 5 >= @score_num && @score_num > 0
-                    @comment = "まあまあだね！！"
-                else
-                    @comment = "全然だめ！"
-                end
+                # Window.draw_font(560, 220, "#{@comment}", @font, color:C_YELLOW)
+                # if @score_num > 5
+                #     @comment = "よくできました！！"
+                # elsif 5 >= @score_num && @score_num > 0
+                #     @comment = "まあまあだね！！"
+                # else
+                #     @comment = "全然だめ！"
+                # end
 
             Window.draw_font(320, 290, "クリア：", @clear_font, color:C_MAGENTA)
             Window.draw_font(550, 290, "#{@clear_num}都市", @clear_font, color:C_MAGENTA)
