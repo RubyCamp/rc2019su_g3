@@ -28,9 +28,9 @@ module Ending
             Window.draw_font(380, 20, "結果発表", @font, color:C_WHITE)
 
             #画面中段の文字
-            Window.draw_font(140, 100, "得点：#{@score_num}点", @score_font, color:C_RED)
+            Window.draw_font(140, 100, "得点：#{@score_num}点", @score_font, color:C_YELLOW)
                 #得点に応じてコメントをだす機能
-                Window.draw_font(560, 220, "#{@comment}", @font, color:C_RED)
+                Window.draw_font(560, 220, "#{@comment}", @font, color:C_YELLOW)
                 if @score_num > 5
                     @comment = "よくできました！！"
                 elsif 5 >= @score_num && @score_num > 0
