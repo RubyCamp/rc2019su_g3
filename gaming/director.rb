@@ -8,7 +8,7 @@ module Gaming
     def initialize
       @char = Character.new(80, Window.height-120,"images/IMG_7974.png",self)
       # @chars = chars
-      @bg_img = Image.load("images/gameing_bg/6479(2).png")
+      @bg_img = Image.load("images/gaming_bg/6479.png")
       Scene.set_val(:clear,0)
       Scene.set_val(:miss,0)
       @font = Font.new(50, 'MS 明朝', weight: true)
