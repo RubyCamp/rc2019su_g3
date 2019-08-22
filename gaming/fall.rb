@@ -20,6 +20,10 @@ class Sprite_shimane < Sprite_sanin
         @yy = rand(5) + 2
         super(x,y,image,director)
     end
+    
+    def image_height
+      @image.height
+    end
 
     def move
         self.y += @yy
@@ -49,6 +53,10 @@ class Sprite_tottori < Sprite_sanin
         super(x,y,image,director)
     end
 
+    def image_height
+      @image.height
+    end
+
     def move
         self.y += @yy
         hantei
@@ -59,6 +67,7 @@ class Sprite_tottori < Sprite_sanin
         self.regen = true
       end
     end
+    
     def play
         move
         draw
