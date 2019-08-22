@@ -13,7 +13,8 @@ class Sprite_shimane < Sprite_sanin
     attr_accessor :y
     def initialize(x, y,image,director)
         #@x, @y = x, y
-        @str = ["松江", "浜田", "出雲", "益田", "大田", "安来", "江津", "雲南"].sample
+        #@str = ["松江", "浜田", "出雲", "益田", "大田", "安来", "江津", "雲南"].sample
+        @str = Image.load("images/shimane_moji/matsue.png")
         #@font = Font.new(40)
         @yy = rand(5) + 2
         super
@@ -25,7 +26,7 @@ class Sprite_shimane < Sprite_sanin
     end
 
     def draw
-        Window.draw_font(@x, @y, @str, @font)
+        Window.draw(@x, @y, @str)
     end
 
     def play
