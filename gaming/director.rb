@@ -12,6 +12,7 @@ module Gaming
       @clear = 0
       @miss = 0
       @gokei = 0
+      @font = Font.new(50, 'MS 明朝', weight: true)
 
       x1 = rand(5) * 140 + 80
       x2 = rand(5) * 140 + 80
@@ -26,12 +27,19 @@ module Gaming
       @director2 = Sprite_tottori.new(x2, 0,nil,self)
     end
 
-    def y
-      @chars.y
-    end
-
     def play
-      Scene.move_to(:ending) if Input.key_push?(K_SPACE)
+      @start_time ||= Time.now  # 制限時間の初期化
+      @now_time = Time.now # 現在の時間
+      @limit_time = 5  #秒
+      @diff_time = @now_time - @start_time #経過時間分
+      @countdown = (@limit_time - @diff_time).to_i
+      min = @countdown / 60
+      sec = @countdown % 60
+      Window.drawFont(870, 700, "#{min}:#{sec}", @font, z:2)
+      if @countdown <= 0
+        @start_time = nil
+        Scene.move_to(:ending)
+      end
       Window.draw_scale(0, 0, @bg_img, 1.28, 1.28, 0, 0)
       if TRUE
         Window.draw_box_fill(800, 0, 1024, 768, [130, 204, 204, 204], 1)
@@ -39,7 +47,7 @@ module Gaming
 
       if @director1.y == 600
         x1 = rand(5) * 140 + 80
-        @director1 = Sprite_shimane.new(x1, 0)
+        @director1 = Sprite_shimane.new(x1, 0, nil, self)
       end
 
       if @director2.y == 600
@@ -51,7 +59,7 @@ module Gaming
           end
         end
 
-        @director2 = Sprite_tottori.new(x2, 0)
+        @director2 = Sprite_tottori.new(x2, 0,nil, self)
       end
 
       @director1.play

@@ -10,6 +10,7 @@ end
 
 class Sprite_shimane < Sprite_sanin
     attr_reader :str
+    attr_accessor :y
     def initialize(x, y,image,director)
         #@x, @y = x, y
         @str = ["松江", "浜田", "出雲", "益田", "大田", "安来", "江津", "雲南"].sample
@@ -32,10 +33,6 @@ class Sprite_shimane < Sprite_sanin
         draw
     end
 
-    def y
-        @y
-    end
-
     def hantei
       #if self.y + self.height > Window.height
       #  director.miss += 1
@@ -44,6 +41,7 @@ class Sprite_shimane < Sprite_sanin
 end
 
 class Sprite_tottori < Sprite_sanin
+    attr_accessor :y
     def initialize(x, y,image,director)
         #@x, @y = x, y
         @str = ["倉吉", "鳥取", "米子", "会見", "岩美", "国府", "境港", "大栄"].sample
@@ -63,8 +61,5 @@ class Sprite_tottori < Sprite_sanin
     def play
         move
         draw
-    end
-    def y
-        @y
     end
 end
