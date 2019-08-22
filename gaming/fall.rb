@@ -35,7 +35,7 @@ end
 
 class Sprite_tottori < Sprite_sanin
     def initialize(x, y,image_file,director)
-        image = Image.load("images/tottori_moji/aimi3.png")
+        image = Image.load("images/tottori_moji/aimi.png")
         @yy = rand(5) + 2
         super(x,y,image,director)
     end

@@ -8,12 +8,13 @@ module Gaming
     def initialize
       @char = Character.new(80, Window.height-80,"images/IMG_7974.png",self)
       # @chars = chars
-      @bg_img = Image.load("images/background.png")
+      @bg_img = Image.load("images/gameing_bg/6479(2).png")
       @clear = 0
       @miss = 0
       @score = 0
       @font = Font.new(50, 'MS 明朝', weight: true)
 
+     
       x1 = rand(5) * 140 + 80
       x2 = rand(5) * 140 + 80
 
@@ -28,7 +29,9 @@ module Gaming
     end
 
     def play
-
+      
+      Window.draw_box_fill(0, 0, Window.width, Window.height, C_WHITE, 0)
+      
 
       @start_time ||= Time.now  # 制限時間の初期化
       @now_time = Time.now # 現在の時間
@@ -69,6 +72,7 @@ module Gaming
       @char.move
       @char.draw
       Sprite.check([@director1, @director2],@char)
+      
     end
 
     def tokuten
