@@ -11,7 +11,7 @@ module Gaming
       @bg_img = Image.load("images/background.png")
       @clear = 0
       @miss = 0
-      @gokei = 0
+      @score = 0
       @font = Font.new(50, 'MS 明朝', weight: true)
 
       x1 = rand(5) * 140 + 80
@@ -71,8 +71,8 @@ module Gaming
       Sprite.check([@director1, @director2],@char)
     end
 
-    def tocuten
-      @goukei = @clear - @miss
+    def tokuten
+      @score = @clear - @miss
     end
 
     # begin
