@@ -7,8 +7,8 @@ class Character < Sprite
   end
 
   def move
-    self.x += 140 if Input.keyPush?(K_RIGHT)
-    self.x -= 140 if Input.keyPush?(K_LEFT)
+    self.x += 70 if Input.keyPush?(K_RIGHT) && (self.x + 70) <= 670
+    self.x -= 70 if Input.keyPush?(K_LEFT) && (self.x - 70 ) >= 80
   end
 
 end
