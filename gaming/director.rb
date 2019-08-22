@@ -6,7 +6,7 @@ module Gaming
   class Director
     attr_accessor :y, :clear, :miss
     def initialize
-      @char = Character.new(0, Window.height-40,"images/IMG_7974.png",self)
+      @char = Character.new(80, Window.height-80,"images/IMG_7974.png",self)
       # @chars = chars
       @bg_img = Image.load("images/background.png")
       @clear = 0
@@ -28,6 +28,8 @@ module Gaming
     end
 
     def play
+
+
       @start_time ||= Time.now  # 制限時間の初期化
       @now_time = Time.now # 現在の時間
       @limit_time = 5  #秒
@@ -64,7 +66,9 @@ module Gaming
 
       @director1.play
       @director2.play
-      #@char.check(@chars,@char)
+      @char.move
+      @char.draw
+      Sprite.check([@director1, @director2],@char)
     end
 
     def tocuten
