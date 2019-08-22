@@ -47,12 +47,21 @@ module Gaming
         Window.draw_box_fill(800, 0, 1024, 768, [130, 204, 204, 204], 1)
       end
 
-      if @director1.y == 600
+      @director1.play
+      @director2.play
+      @char.move
+      @char.draw
+      @char.check([@director1, @director2]).each do |director|
+        director.vanish
+        director.regen = true
+      end
+
+      if @director1.regen
         x1 = rand(5) * 140 + 80
         @director1 = Sprite_shimane.new(x1, 0, nil, self)
       end
 
-      if @director2.y == 600
+      if @director2.regen
         x2 = rand(5) * 140 + 80
 
         if x1 == x2
@@ -63,12 +72,6 @@ module Gaming
 
         @director2 = Sprite_tottori.new(x2, 0,nil, self)
       end
-
-      @director1.play
-      @director2.play
-      @char.move
-      @char.draw
-      Sprite.check([@director1, @director2],@char)
     end
 
     def tokuten
